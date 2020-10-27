@@ -3,7 +3,7 @@
 #----------------------------------------
 # @Author: 张涛
 # @Date: 2020-10-09 17:22:07
-# @LastEditTime: 2020-10-27 17:44:41
+# @LastEditTime: 2020-10-27 20:02:38
 # @LastEditors: 张涛
 # @Description: 程序运行主窗口
 # @FilePath: \main.py
@@ -218,7 +218,7 @@ if __name__ == "__main__":
   from PyQt5.QtWidgets import QApplication
   import sys
   app = QApplication(sys.argv)
-  app.setStyleSheet(open("./UnFrameStyle.qss").read())
+  app.setStyleSheet(open("./style/UnFrameStyle.qss").read())
   window = QUnFrameWindow()
   window.setCloseButton(True)
   window.setMinMaxButtons(True)
