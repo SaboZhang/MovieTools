@@ -3,7 +3,7 @@
 #----------------------------------------
 # @Author: 张涛
 # @Date: 2020-10-09 17:22:07
-# @LastEditTime: 2020-10-27 17:44:41
+# @LastEditTime: 2020-10-28 17:46:52
 # @LastEditors: 张涛
 # @Description: 程序运行主窗口
 # @FilePath: \main.py
@@ -41,9 +41,10 @@ class QUnFrameWindow(QWidget):
     self._padding = 5 # 设置边界宽度为5
     self.initTitleLabel() # 安放标题栏标签
     self.setWindowTitle = self._setTitleText(self.setWindowTitle) # 用装饰器将设置WindowTitle名字函数共享到标题栏标签上
-    self.setWindowTitle("UnFrameWindow")
+    self.setWindowTitle("主窗口")
     self.initLayout() # 设置框架布局
-    self.setMinimumWidth(250)
+    self.setMinimumWidth(1366)
+    self.setMinimumHeight(768)
     self.setMouseTracking(True) # 设置widget鼠标跟踪
     self.initDrag() # 设置鼠标跟踪判断默认值
 
