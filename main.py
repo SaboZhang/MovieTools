@@ -3,7 +3,7 @@
 #----------------------------------------
 # @Author: 张涛
 # @Date: 2020-10-09 17:22:07
-# @LastEditTime: 2020-10-28 18:12:46
+# @LastEditTime: 2020-10-29 13:03:44
 # @LastEditors: 张涛
 # @Description: 程序运行主窗口
 # @FilePath: \main.py
@@ -12,7 +12,7 @@
 
 from PyQt5.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout
 from PyQt5.QtCore import Qt, QPoint
-from PyQt5.QtGui import QFont, QCursor
+from PyQt5.QtGui import QFont, QCursor ,QIcon
 
 class QTitleLabel(QLabel):
   """
