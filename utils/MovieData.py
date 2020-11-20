@@ -3,7 +3,7 @@
 # ----------------------------------------
 # @Author: 张涛
 # @Date: 2020-10-10 18:36:56
-# @LastEditTime: 2020-11-18 17:32:24
+# @LastEditTime: 2020-11-20 17:27:09
 # @LastEditors: 张涛
 # @Description: 一句话描述
 # @FilePath: \utils\MovieData.py
@@ -11,7 +11,6 @@
 # ----------------------------------------
 import os
 import re
-from pathlib import Path
 from moviepy.editor import VideoFileClip
 import xml.etree.ElementTree as ET
 
@@ -70,13 +69,37 @@ class MovieData(object):
         """
         tree = ET.parse(filePath)
         root = tree.getroot()
+        nfo = {}
         for element in root.iter('movie'):
             # 根节点信息
-            element.findtext('plot')
-            element.findtext('title')
-            element.findtext('rating')
-            element.findtext('year')
-            element.findtext()
+            nfo['plot'] = element.findtext('plot')
+            # 添加日期
+            nfo['add_date'] = element.findtext('dateadded')
+            nfo['title'] = element.findtext('title')
+            nfo['org_title'] = element.findtext('originaltitle')
+            nfo['director'] = element.findtext('director')
+            nfo['rating'] = element.findtext('rating')
+            nfo['year'] = element.findtext('year')
+            nfo['imdb_id'] = element.findtext('imdbid')
+            nfo['tmdb_id'] = element.findtext('tmdbid')
+            nfo['premiered'] = element.findtext('premiered')
+            nfo['releasedate'] = element.findtext('releasedate')
+            # 烂番茄评分
+            nfo['criticrating'] = element.findtext('criticrating')
+            nfo['runtime'] = element.findtext('runtime')
+            country = []
+            genre = []
+            studio = []
+            for v, k in enumerate(element):
+                if k.tag == 'country':
+                    country.append('{0}'.format(element[v].text))
+                elif k.tag == 'genre':
+                    genre.append('{0}'.format(element[v].text))
+                elif k.tag == 'studio':
+                    studio.append('{0}'.format(element[v].text))
+            nfo['country'] = country
+            nfo['genre'] = genre
+            nfo['studio'] = studio
             for actor in element.iter('actor'):
                 for info in actor.iter('actor'):
                     info.findtext('name')

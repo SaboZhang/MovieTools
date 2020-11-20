@@ -3,7 +3,7 @@
 # ----------------------------------------
 # @Author: 张涛
 # @Date: 2020-11-18 12:09:53
-# @LastEditTime: 2020-11-18 17:54:57
+# @LastEditTime: 2020-11-20 18:06:49
 # @LastEditors: 张涛
 # @Description: 一句话描述
 # @FilePath: \test1.py
@@ -41,27 +41,49 @@ def nfo_parse(filePath):
         """
         tree = ET.parse(filePath)
         root = tree.getroot()
+        # root = iterparse(filePath, ('start', 'end'))
         for element in root.iter('movie'):
-            print(element.findtext('plot'))
-            print(element[0].findtext('country'))
-            print(element[1].findtext('country'))
-            # print(element.findtext('actor'))
-            for ac in element.iter('actor'):
-                for u in ac.iter('actor'):
-                    print(u.findtext('name'))
-                    print(u.findtext('role'))
-                    print(u.findtext('type'))
-            out = {}
-            for n in range(len(element)):
-                out.append('{0}'.format(element[n].text))
-            print(out)
+            # 根节点信息
+            element.findtext('plot')
+            # 添加日期
+            element.findtext('dateadded')
+            element.findtext('title')
+            element.findtext('originaltitle')
+            element.findtext('director')
+            element.findtext('rating')
+            element.findtext('year')
+            element.findtext('imdbid')
+            element.findtext('tmdbid')
+            element.findtext('premiered')
+            element.findtext('releasedate')
+            # 烂番茄评分
+            element.findtext('criticrating')
+            element.findtext('runtime')
+            for v, k in enumerate(element):
+                if k.tag == 'country':
+                    print('{0}'.format(element[v].text))
+                elif k.tag == 'genre':
+                    print('{0}'.format(element[v].text))
+                elif k.tag == 'studio':
+                    print('{0}'.format(element[v].text))
+            for actor in element.iter('actor'):
+                for info in actor.iter('actor'):
+                    info.findtext('name')
+                    info.findtext('role')
+                    info.findtext('type')
 
 
 if __name__ == "__main__":
     # video_name = get_video_name(r'E:\Documents')
     # for k, v in video_name.items():
+    # if element.attrib() == 'country':
     #     print('Key是', k)
     #     print('value', v)
     # file = r'E:\Downloads\请用心听.不要.说话.雅乐传媒.mp3'
     # print(os.path.splitext(file)[-1])
     nfo_parse('E:\Downloads\Mulan 2020 Disney+ 4K WEBRip HDR10+ x265 10bit DD+ 5.1 Atmos -LMovHD.nfo')
+    # test_dict = {}
+    # for i in range(5):
+    #     test_list = [].append(i)
+    # print(test_list)
+   
