@@ -23,3 +23,10 @@ QTitleButton#CloseButton:hover{
     border: 0px;
     font: 100 10pt;
 }
+
+QPushButton#homeButton:hover{
+    background-color: #6289d3;
+    color: white;
+    border: 0px;
+    font: 100 10pt;
+}

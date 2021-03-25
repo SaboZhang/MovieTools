@@ -100,11 +100,17 @@ class MovieData(object):
             nfo['country'] = country
             nfo['genre'] = genre
             nfo['studio'] = studio
+            actor_num = 0
             for actor in element.iter('actor'):
+                actor_num += 1
                 for info in actor.iter('actor'):
-                    info.findtext('name')
-                    info.findtext('role')
-                    info.findtext('type')
+                    name = info.findtext('name')
+                    role = info.findtext('role')
+                    profession = info.findtext('type')
+                nfo['actor%s' % actor_num] = [name, role, profession]
+    
+    def get_path(self):
+        pass
 
 # # 影片名称拆分
 # str = '[#机器人总动员].Wall.E.2008.UHD.2160p.x265.10bit.HDR.DDP5.1.国粤台英四语.内封特效中英-FFans@leon'
